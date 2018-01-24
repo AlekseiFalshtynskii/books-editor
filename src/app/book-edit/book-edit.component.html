@@ -1,0 +1,81 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="title" type="text" data-length="30" maxlength="30" [ngModelOptions]="{standalone: true}" [(ngModel)]="book.title">
+        <label for="title" class="active">Название</label>
+      </div>
+    </div>
+    <div class="row" *ngFor="let author of book.authors">
+      Автор:
+      <div class="input-field inline">
+        <input id="author_name" type="text" data-length="20" maxlength="20" [ngModelOptions]="{standalone: true}" [(ngModel)]="author.name">
+        <label for="author_name" class="active">Имя</label>
+      </div>
+      <div class="input-field inline">
+        <input id="author_lastName" type="text" data-length="20" maxlength="20" [ngModelOptions]="{standalone: true}" [(ngModel)]="author.lastName">
+        <label for="author_lastName" class="active">Фамилия</label>
+      </div>
+      <div class="input-field inline">
+        <a class="waves-effect waves-light btn" (click)="deleteAuthor(author)">Удалить</a>
+      </div>
+    </div>
+    <div class="row">
+      Автор:
+      <div class="input-field inline">
+        <input id="author_name_new" type="text" data-length="20" maxlength="20" [ngModelOptions]="{standalone: true}" [(ngModel)]="newAuthor.name">
+        <label for="author_name_new" class="active">Имя</label>
+      </div>
+      <div class="input-field inline">
+        <input id="author_lastName_new" type="text" data-length="20" maxlength="20" [ngModelOptions]="{standalone: true}" [(ngModel)]="newAuthor.lastName">
+        <label for="author_lastName_new" class="active">Фамилия</label>
+      </div>
+      <div class="input-field inline">
+        <a class="waves-effect waves-light btn" (click)="addAuthor()">Добавить</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="pageCount" type="number" min="0" max="10000" [ngModelOptions]="{standalone: true}" [(ngModel)]="book.pageCount">
+        <label for="pageCount" class="active">Количество страниц</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="publishing" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="book.publishing">
+        <label for="publishing" class="active">Издательство</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="publishingYear" type="number" min="1800" max="{{getNowYear()}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="book.publishingYear">
+        <label for="publishingYear" class="active">Год публикации</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="releaseDate" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="book.releaseDate">
+        <label for="releaseDate" class="active">Дата выхода в тираж</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="isbn" type="text" maxlength="13" [ngModelOptions]="{standalone: true}" [(ngModel)]="book.isbn">
+        <label for="isbn" class="active">ISBN</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Изображение</span>
+          <input type="file" (change)="onChange($event)">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </div>
+    <a class="waves-effect waves-light btn" (click)="save()">Сохранить</a>
+    <a class="waves-effect waves-light btn" routerLink="/">Отменить</a>
+  </form>
+</div>

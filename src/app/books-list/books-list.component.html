@@ -1,0 +1,9 @@
+<div class="container">
+  <a class="waves-effect waves-light btn" routerLink="book-edit"><i class="material-icons left">add</i>Добавить книгу</a>
+  <a class="waves-effect waves-light btn" (click)="sortByTitle()"><i class="material-icons left">{{getArrowIcon('title')}}</i>Сортировать по заголовку</a>
+  <a class="waves-effect waves-light btn" (click)="sortByPublishingYear()"><i class="material-icons left">{{getArrowIcon('publishingYear')}}</i>Сортировать по году публикации</a>
+
+  <div *ngFor="let book of books | orderBy: orderField: reverse" class="col s12 m7">
+    <app-book [book]="book" (remove)="updateBooks($event)"></app-book>
+  </div>
+</div>

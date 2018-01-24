@@ -1,0 +1,20 @@
+<h3 class="header">{{book.title}}</h3>
+<div class="card horizontal small">
+  <div class="card-image">
+    <img *ngIf="book.image" src="{{book.image}}">
+  </div>
+  <div class="card-stacked">
+    <div class="card-content">
+      <p>Автор{{book.authors.length > 1 ? 'ы' : ''}}: {{getAuthors(book)}}</p>
+      <p>Количество страниц: {{book.pageCount}}</p>
+      <p *ngIf="book.publishing">Издательство: {{book.publishing}}</p>
+      <p>Год публикации: {{book.publishingYear}}</p>
+      <p>Дата выхода в тираж: {{book.releaseDate}}</p>
+      <p>ISBN: {{book.isbn}}</p>
+    </div>
+    <div class="card-action">
+      <a [routerLink]="['/book-edit', book.id]" class="waves-effect waves-light btn">Редактировать</a>
+      <a (click)="removeBook()" class="waves-effect waves-light btn">Удалить</a>
+    </div>
+  </div>
+</div>
